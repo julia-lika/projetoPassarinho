@@ -1,35 +1,32 @@
-// configurações básicas do jogo
+// Configurações básicas do jogo
 var config = {
-    // navegador escolhe automaticamente o tipo de renderizador da página web
+    // O navegador escolhe automaticamente o tipo de renderizador da página web
     type: Phaser.AUTO,
-
-    // largura
+    // Largura
     width: 800,
-
-    // altura
+    // Altura
     height: 600,
-
-    // funções que serão executadas durante o ciclo de vida do jogo
+    // Funções que serão executadas durante o ciclo de vida do jogo
     scene: {
         preload: preload,
         create: create,
         update: update
     }
 };
-// criando uma variável game e guardando nela um "novo jogo phaser"
+// Criando uma variável game e guardando nela um "novo jogo Phaser"
 var game = new Phaser.Game(config);
 
-// criando variável para guardar o passarinho e usá-lo diretamente
+// Criando variável para guardar o passarinho e usá-lo diretamente
 var passarinho;
 
-// carregar funções do jogo
+// Carregar funções do jogo
 function preload() {
     this.load.image('cloud', 'assets/cloud.png');
     this.load.image('bg', 'assets/bg_space.png');
     this.load.spritesheet('bird', 'assets/bird-purple.png', { frameWidth: 75, frameHeight: 75 });
 }
 
-// usar as funções carregadas para criar/configurá-las no jogo
+// Usar as funções carregadas para criar/configurá-las no jogo
 function create() {
     this.add.image(400, 300, 'bg').setScale(1.2);
     passarinho = this.add.sprite(100, 300, 'bird').setScale(1.3);
@@ -44,8 +41,9 @@ function create() {
     passarinho.anims.play('fly', true);
 }
 
-// definir lógica de atualização em tempo real do jogo. exemplo: movimento do personagem
+// Definir lógica de atualização em tempo real do jogo. Exemplo: movimento do personagem
 function update() {
+    // Movimento horizontal
     while (!passarinho.directionX) {
         passarinho.directionX = 'right';
     }
@@ -66,6 +64,7 @@ function update() {
         passarinho.setFlip(true, false);
     }
 
+    // Movimento vertical
     while (!passarinho.directionY) {
         passarinho.directionY = 'down';
     }
@@ -82,4 +81,3 @@ function update() {
         passarinho.directionY = 'down';
     }
 }
-
