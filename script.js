@@ -46,7 +46,7 @@ function create() {
 
 // definir lógica de atualização em tempo real do jogo. exemplo: movimento do personagem
 function update() {
-    if (!passarinho.directionX) {
+    while (!passarinho.directionX) {
         passarinho.directionX = 'right';
     }
 
@@ -66,7 +66,7 @@ function update() {
         passarinho.setFlip(true, false);
     }
 
-    if (!passarinho.directionY) {
+    while (!passarinho.directionY) {
         passarinho.directionY = 'down';
     }
 
